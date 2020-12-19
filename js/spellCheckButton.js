@@ -8,6 +8,7 @@ let checkSpelling = () => {
 }
 
 let createSuggestion = (word) => {
+    console.log('making word node for ', word)
     let colDiv = document.createElement('div');
     colDiv.setAttribute('class', 'word col-md-6');
 
@@ -22,6 +23,7 @@ let createSuggestion = (word) => {
 }
 
 let deleteSuggestions = () => {
+    console.log('deleting suggestions ...')
     let wordsContainer = document.getElementById('suggested-words');
     let words = wordsContainer.querySelectorAll('.word');
     let wordsArr = Array.from(words);
