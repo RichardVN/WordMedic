@@ -1,16 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spell Checker</title>
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    
-    <!-- Scripts -->
-    <script src="js/bootstrap.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Spell Checker</title>
+        <!-- CSS Stylesheet -->
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div id="cover" class="position-relative">
+            <div class="container pt-5">
+                <h3 class="text-center">
+                    Enter Search
+                </h3>
+
+                <div class="col-md-8 mx-auto">
+                    <div class="card mb-4">
+                        <div class="card-body px-md-5 py-md-5">
+                            <div class="col-md-8 mx-auto">
+                                <div class="form-group px-md-5 text-center mb-4">
+                                    <input
+                                        type="text"
+                                        class="form-control text-center"
+                                        id="word"
+                                        placeholder="hello there"
+                                    />
+                                </div>
+                                <div class="d-grid col-md-4 mx-auto">
+                                    <button
+                                        class="btn btn-lg btn-success"
+                                        type="button"
+                                        onclick="checkSpelling();"
+                                    >
+                                        Spell Check!
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="container px-0 px-md-4 py-md-3">
+                                <h1
+                                    id="correct-message"
+                                    class="text-center fw-normal"
+                                    style="color: green;"
+                                >
+                                    Correctly Spelled!
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div  class="container px-0 px-md-4 py-md-3">
+                                <h2 class="text-center mb-2 mb-md-4">
+                                    Suggested Words
+                                </h2>
+
+                                <div id="suggested-words" class="row g-lg-4 g-3">
+                                    <div class="word col-md-6">
+                                        <div class="p-3 border bg-light">
+                                            Custom column padding
+                                        </div>
+                                    </div>
+                                    <div class="word col-md-6">
+                                        <div class="p-3 border bg-light">
+                                            Custom column padding
+                                        </div>
+                                    </div>
+                                    <div class="word col-md-6">
+                                        <div class="p-3 border bg-light">
+                                            Custom column padding
+                                        </div>
+                                    </div>
+                                    <div class="word col-md-6">
+                                        <div class="p-3 border bg-light">
+                                            Custom column padding
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row justify-content-center my-2">
+        <div class="col-10">
+            <div class="card">
+            <div class="card-body">
+                he
+            </div>
+        </div>
+        </div>
+        
+    </div> -->
+        <!-- Scripts -->
+        <script src="js/bootstrap.js"></script>
+        <script src="js/spellCheckButton.js"></script>
+    </body>
 </html>
