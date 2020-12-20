@@ -1,4 +1,4 @@
-# Spell Helper
+# WordMedic
 A spell checking web application. 
 - Confirms if a word is spelled correctly.
 - If a word is incorrectly spelled: suggests words that are close to the mispelled word (using Levenshtein distance). 
