@@ -9,31 +9,62 @@
         <link rel="stylesheet" href="css/styles.css" />
     </head>
     <body>
+        <div class="masthead">
+            <div id="landing-title">
+                <h1 class="display-1">SpellHelper</h1>
+            </div>
+        </div>
         <div id="cover" class="position-relative">
             <div class="container pt-5">
-                <h3 class="text-center">
-                    Enter Search
-                </h3>
-
                 <div class="col-md-8 mx-auto">
                     <div class="card mb-4">
                         <div class="card-body px-md-5 py-md-5">
                             <div class="col-md-8 mx-auto">
-                                <div class="form-group px-md-5 text-center mb-4">
+                                <h3 class="text-center">
+                                    Enter a Word
+                                </h3>
+                                <div
+                                    class="form-group px-md-5 text-center mb-4"
+                                >
                                     <input
                                         type="text"
                                         class="form-control text-center"
                                         id="word"
-                                        placeholder="hello there"
                                         required
                                     />
+                                    <div class="invalid-feedback">
+                                        Please enter a word first.
+                                    </div>
                                 </div>
-                                <div class="d-grid col-md-4 mx-auto">
+
+                                <div class="row g-3 align-items-center px-md-5">
+                                    <div class="col-auto">
+                                        <label
+                                            for="num-suggestions"
+                                            class="col-form-label"
+                                            >Number of Suggestions:</label
+                                        >
+                                    </div>
+                                    <div class="col-auto">
+                                        <select
+                                            class="form-select"
+                                            id="num-suggestions"
+                                        >
+                                            <option value="5" selected
+                                                >5</option
+                                            >
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-grid col-md-4 mt-4 mx-auto">
                                     <button
                                         id="spell-button"
                                         class="btn btn-lg btn-success"
                                         type="button"
-                                        onclick="buttonPress();"
                                     >
                                         Spell Check!
                                     </button>
@@ -41,29 +72,17 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div id="correct-card" class="card" hidden>
+
+                    <div id="suggestion-card" class="card" hidden>
                         <div class="card-body">
                             <div class="container px-0 px-md-4 py-md-3">
                                 <h1
                                     id="correct-message"
                                     class="text-center fw-normal"
                                     style="color: green;"
-                                >
-                                    Correctly Spelled!
-                                </h2>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div id="suggestion-card" class="card" hidden>
-                        <div class="card-body">
-                            <div  class="container px-0 px-md-4 py-md-3">
-                                <h1
-                                    id="correct-message"
-                                    class="text-center fw-normal"
-                                    style="color: green;"
                                     hidden
                                 >
-                                    Correct spelling!
+                                    Correct Spelling!
                                 </h1>
                                 <h1
                                     id="incorrect-message"
@@ -71,14 +90,17 @@
                                     style="color: red;"
                                     hidden
                                 >
-                                    That's the wrong spelling!
+                                    Incorrect Spelling!
                                 </h1>
-                                
 
-                                <div id="suggested-words" class="row g-lg-4 g-3" hidden>
+                                <div
+                                    id="suggested-words"
+                                    class="row g-lg-4 g-3"
+                                    hidden
+                                >
                                     <h2 class="text-center mb-2 mb-md-4">
-                                    Suggested Words
-                                </h2>
+                                        Suggested Words:
+                                    </h2>
                                     <div class="word col-md-6">
                                         <div class="p-3 border bg-light">
                                             Custom column padding

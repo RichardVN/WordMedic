@@ -1,6 +1,10 @@
 // load dictionary into js var
 let js_dict;
 let wordCount = 100;
+
+
+
+
 fetch("./dictionary.json")
     .then((response) => {
         return response.json();
@@ -13,7 +17,7 @@ fetch("./dictionary.json")
 let buttonPress = () => {
     let button = document.getElementById('spell-button');
     button.disabled = true;
-    console.log("Button pressed!");
+    // console.log("Button pressed!");
     checkSpelling();
 
     button.disabled = false;
@@ -21,20 +25,20 @@ let buttonPress = () => {
 };
 
 let checkSpelling = () => {
-    console.log("checking spelling ... ");
-    let word = document.getElementById("word").value;
+    // console.log("checking spelling ... ");
+    let wordNode = document.getElementById("word");
+    let word = wordNode.value;
     word = word.toLowerCase().trim();
     if (word == "") {
-        window.alert("Please enter a word!");
+        wordNode.classList.add('is-invalid');
         return;
     }
-    console.log(word);
-
+    wordNode.classList.remove('is-invalid');
     // word is nonempty reset suggestions
+    window.location.href = "#suggestion-card"
     deleteSuggestions();
     document.getElementById("suggestion-card").hidden = false;
     if (js_dict.hasOwnProperty(word)) {
-        console.log(word + " is valid word!");
         document.getElementById("correct-message").hidden = false;
         document.getElementById("incorrect-message").hidden = true;
         document.getElementById("suggested-words").hidden = true;
@@ -91,6 +95,7 @@ let levenshteinDistance = (a, b) => {
 let getSuggestionList = (userWord) => {
     let suggestedWords = [];
     let suggestedDistances = [];
+    wordCount = document.getElementById('num-suggestions').value;
     for(let word in js_dict){
         if (word.length - userWord.length <= 1 && userWord.length - word.length <= 1) {
             let wordDistance = levenshteinDistance(userWord, word);
@@ -128,7 +133,6 @@ let appendWord = (word) => {
 
 // create a word HTML element
 let createSuggestion = (word) => {
-    console.log("making word node for ", word);
     let colDiv = document.createElement("div");
     colDiv.setAttribute("class", "word col-md-6");
 
@@ -143,7 +147,7 @@ let createSuggestion = (word) => {
 
 // delete suggested word nodes
 let deleteSuggestions = () => {
-    console.log("deleting suggestions ...");
+    // console.log("deleting suggestions ...");
     let wordsContainer = document.getElementById("suggested-words");
     let words = wordsContainer.querySelectorAll(".word");
     let wordsArr = Array.from(words);
@@ -151,3 +155,10 @@ let deleteSuggestions = () => {
         word.remove();
     }
 };
+
+document.getElementById('word').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        buttonPress();
+    }
+});
+document.getElementById('spell-button').addEventListener('click', buttonPress)
