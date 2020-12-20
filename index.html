@@ -25,13 +25,15 @@
                                         class="form-control text-center"
                                         id="word"
                                         placeholder="hello there"
+                                        required
                                     />
                                 </div>
                                 <div class="d-grid col-md-4 mx-auto">
                                     <button
+                                        id="spell-button"
                                         class="btn btn-lg btn-success"
                                         type="button"
-                                        onclick="checkSpelling();"
+                                        onclick="buttonPress();"
                                     >
                                         Spell Check!
                                     </button>
@@ -39,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <!-- <div id="correct-card" class="card" hidden>
                         <div class="card-body">
                             <div class="container px-0 px-md-4 py-md-3">
                                 <h1
@@ -51,15 +53,32 @@
                                 </h2>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
+                    </div> -->
+                    <div id="suggestion-card" class="card" hidden>
                         <div class="card-body">
                             <div  class="container px-0 px-md-4 py-md-3">
-                                <h2 class="text-center mb-2 mb-md-4">
+                                <h1
+                                    id="correct-message"
+                                    class="text-center fw-normal"
+                                    style="color: green;"
+                                    hidden
+                                >
+                                    Correct spelling!
+                                </h1>
+                                <h1
+                                    id="incorrect-message"
+                                    class="text-center fw-normal"
+                                    style="color: red;"
+                                    hidden
+                                >
+                                    That's the wrong spelling!
+                                </h1>
+                                
+
+                                <div id="suggested-words" class="row g-lg-4 g-3" hidden>
+                                    <h2 class="text-center mb-2 mb-md-4">
                                     Suggested Words
                                 </h2>
-
-                                <div id="suggested-words" class="row g-lg-4 g-3">
                                     <div class="word col-md-6">
                                         <div class="p-3 border bg-light">
                                             Custom column padding
