@@ -2,9 +2,6 @@
 let js_dict;
 let wordCount = 100;
 
-
-
-
 fetch("./dictionary.json")
     .then((response) => {
         return response.json();
@@ -15,13 +12,12 @@ fetch("./dictionary.json")
     });
 
 let buttonPress = () => {
-    let button = document.getElementById('spell-button');
+    let button = document.getElementById("spell-button");
     button.disabled = true;
     // console.log("Button pressed!");
     checkSpelling();
 
     button.disabled = false;
-
 };
 
 let checkSpelling = () => {
@@ -30,12 +26,12 @@ let checkSpelling = () => {
     let word = wordNode.value;
     word = word.toLowerCase().trim();
     if (word == "") {
-        wordNode.classList.add('is-invalid');
+        wordNode.classList.add("is-invalid");
         return;
     }
-    wordNode.classList.remove('is-invalid');
+    wordNode.classList.remove("is-invalid");
     // word is nonempty reset suggestions
-    window.location.href = "#suggestion-card"
+    window.location.href = "#suggestion-card";
     deleteSuggestions();
     document.getElementById("suggestion-card").hidden = false;
     if (js_dict.hasOwnProperty(word)) {
@@ -95,33 +91,33 @@ let levenshteinDistance = (a, b) => {
 let getSuggestionList = (userWord) => {
     let suggestedWords = [];
     let suggestedDistances = [];
-    wordCount = document.getElementById('num-suggestions').value;
-    for(let word in js_dict){
-        if (word.length - userWord.length <= 1 && userWord.length - word.length <= 1) {
+    wordCount = document.getElementById("num-suggestions").value;
+    for (let word in js_dict) {
+        if (
+            word.length - userWord.length <= 1 &&
+            userWord.length - word.length <= 1
+        ) {
             let wordDistance = levenshteinDistance(userWord, word);
             // 5 suggested words
             if (suggestedDistances.length < wordCount) {
                 suggestedDistances.push(wordDistance);
                 suggestedWords.push(word);
-            }else{
-                
+            } else {
                 for (let i = 0; i < wordCount; i++) {
                     if (wordDistance < suggestedDistances[i]) {
                         suggestedDistances[i] = wordDistance;
                         suggestedWords[i] = word;
                         break;
                     }
-                    
                 }
             }
-            
         }
     }
     // append suggested word nodes
-    for(suggestedWord of suggestedWords){
+    for (suggestedWord of suggestedWords) {
         appendWord(suggestedWord);
     }
-}
+};
 
 // append word HTML element to suggestion container
 let appendWord = (word) => {
@@ -156,9 +152,9 @@ let deleteSuggestions = () => {
     }
 };
 
-document.getElementById('word').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
+document.getElementById("word").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
         buttonPress();
     }
 });
-document.getElementById('spell-button').addEventListener('click', buttonPress)
+document.getElementById("spell-button").addEventListener("click", buttonPress);
