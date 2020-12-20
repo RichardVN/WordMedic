@@ -6,4 +6,4 @@ A spell checking web application.
 
 This is an extension of my previous spellchecking project found at https://github.com/RichardVN/spellchecker, which consisted of C and Python implementations of spellcheck using a command line interface.
 ## Click on the link below to view the app!
-https://richardvn.github.io/spell-helper/
+https://richardvn.github.io/WordMedic/
